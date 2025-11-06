@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarah Woods | Author of 'The Whispering Willow'</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Quicksand (soft and rounded) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Apply the soft font to the body */
+        body {
+            font-family: 'Quicksand', sans-serif;
+        }
+        /* Offset for sticky nav when jumping to anchors */
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px; /* Adjust based on nav height */
+        }
+    </style>
+    <script>
+        // Custom configuration for Tailwind to extend colors
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'pastel-blue': '#e0f7fa',
+                        'pastel-green': '#e8f5e9',
+                        'pastel-pink': '#fce4ec',
+                        'brand-teal': {
+                            100: '#ccebec',
+                            300: '#80d0d9',
+                            500: '#00aab9',
+                            700: '#007b8a',
+                            900: '#004c55',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-pastel-blue bg-opacity-50 text-slate-700">
+
+    <!-- Header & Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center py-4">
+                <!-- Author Name / Brand -->
+                <span class="text-2xl font-bold text-brand-teal-700">Sarah Woods</span>
+                <!-- Navigation Links -->
+                <div class="flex space-x-5 sm:space-x-8 mt-3 sm:mt-0 items-center">
+                    <a href="#about-book" class="text-gray-600 hover:text-brand-teal-500 font-medium transition duration-150">The Book</a>
+                    <a href="#about-author" class="text-gray-600 hover:text-brand-teal-500 font-medium transition duration-150">The Author</a>
+                    <a href="#order" class="bg-brand-teal-500 text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-brand-teal-600 shadow-md hover:shadow-lg transition-all duration-200 transform hover:scale-105">
+                        Order Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-white">
+        <div class="container mx-auto px-6 py-20 md:py-32 text-center">
+            <div class="max-w-4xl mx-auto">
+                <span class="text-brand-teal-500 font-semibold uppercase tracking-wider">Her very first book</span>
+                <h1 class="text-4xl md:text-6xl font-bold text-brand-teal-900 mt-2 mb-6">The Whispering Willow</h1>
+                <p class="text-lg md:text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
+                    A heartwarming tale of friendship, courage, and listening to the world around you.
+                </p>
+                <div class="flex justify-center items-center">
+                    <img src="https://placehold.co/300x400/e0f7fa/007b8a?text=Book+Cover"
+                         alt="Cover of The Whispering Willow"
+                         class="w-64 md:w-80 rounded-xl shadow-2xl"
+                         onerror="this.src='https://placehold.co/300x400/e0f7fa/007b8a?text=Book+Cover+Missing'">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About the Book Section -->
+    <section id="about-book" class="py-20 bg-pastel-green bg-opacity-50">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Image Placeholder -->
+                <div class="text-center">
+                    <img src="https://placehold.co/500x350/e8f5e9/007b8a?text=Inside+Illustration"
+                         alt="An illustration from inside the book"
+                         class="rounded-xl shadow-lg w-full"
+                         onerror="this.src='https://placehold.co/500x350/e8f5e9/007b8a?text=Illustration+Missing'">
+                </div>
+                <!-- Text Content -->
+                <div class="md:pl-8">
+                    <h2 class="text-3xl font-bold text-brand-teal-700 mb-5">About the Book</h2>
+                    <div class="text-lg text-slate-700 space-y-4">
+                        <p>
+                            'The Whispering Willow' tells the story of Pip, a small squirrel with a big problem: he's lost his favorite acorn!
+                        </p>
+                        <p>
+                            His search takes him on an adventure through the forest, where he meets a wise old badger, a family of playful bunnies, and the kindest tree of all—the Whispering Willow.
+                        </f>
+                        <blockquote class="border-l-4 border-brand-teal-300 pl-4 py-2 italic text-slate-600 my-4">
+                            "A gentle, beautifully illustrated story that teaches children the magic of helping others and finding new friends."
+                        </blockquote>
+                        <p>
+                            Perfect for bedtime stories and early readers, this book is filled with soft, pastel illustrations and a message of kindness.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Author Section -->
+    <section id="about-author" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <!-- Text Content -->
+                <div>
+                    <h2 class="text-3xl font-bold text-brand-teal-700 mb-5">A Little About Me, Sarah</h2>
+                    <div class="text-lg text-slate-700 space-y-4">
+                        <p>
+                            Hi, I'm Sarah! I'm a new author and a lifelong lover of children's stories. I've been a kindergarten teacher for ten years, and my favorite part of the day has always been storytime.
+                        </p>
+                        <p>
+                            I was inspired to write 'The Whispering Willow' by the endless curiosity and big hearts of my students. When I'm not writing or in the classroom, I love hiking, drinking tea, and doodling in my sketchbook.
+                        </p>
+                        <p>
+                            This is my very first book, and I'm so excited to share it with you and your family. I hope it brings a little bit of magic to your storytime, too.
+                        </p>
+                    </div>
+                </div>
+                <!-- Author Image -->
+                <div class="text-center">
+                    <img src="https://placehold.co/400x400/fce4ec/007b8a?text=Author+Photo"
+                         alt="A photo of the author, Sarah Woods"
+                         class="rounded-full w-64 h-64 md:w-80 md:h-80 mx-auto object-cover shadow-lg border-8 border-white"
+                         onerror="this.src='https://placehold.co/400x400/fce4ec/007b8a?text=Author+Missing'">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Customized Copies Section -->
+    <section id="order" class="py-20 bg-pastel-pink bg-opacity-50">
+        <div class="container mx-auto px-6 max-w-3xl text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-teal-700 mb-5">Order a Special, Customized Copy</h2>
+            <p class="text-lg text-slate-600 mb-10 max-w-2xl mx-auto">
+                Make it a gift to remember! I can sign the book and add a short, personalized message for your little one.
+                Fill out the form below to place your request.
+            </p>
+
+            <!-- Order Form -->
+            <form id="order-form" class="text-left bg-white p-8 md:p-12 rounded-xl shadow-xl space-y-6">
+                <!-- Name -->
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                    <input type="text" id="name" name="name" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-teal-300 transition">
+                </div>
+                
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Your Email</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-teal-300 transition">
+                </div>
+
+                <!-- Child's Name (for dedication) -->
+                <div>
+                    <label for="child-name" class="block text-sm font-medium text-gray-700 mb-1">Child's Name (for dedication)</label>
+                    <input type="text" id="child-name" name="child-name" required
+                           placeholder="E.g., 'For Emily'"
+                           class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-teal-300 transition">
+                </div>
+
+                <!-- Short Message (optional) -->
+                <div>
+                    <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Short Message (optional)</label>
+                    <textarea id="message" name="message" rows="3"
+                              placeholder="E.g., 'Happy 5th Birthday!'"
+                              class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-brand-teal-300 transition"></textarea>
+                    <p class="text-xs text-gray-500 mt-1">I will add this message along with my signature.</p>
+                </div>
+
+                <!-- Submit Button -->
+                <div>
+                    <button type-="submit"
+                            class="w-full bg-brand-teal-500 hover:bg-brand-teal-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:shadow-xl transform transition-all hover:scale-105 duration-200 text-lg">
+                        Request My Customized Copy
+                    </button>
+                </div>
+                
+                <p class="text-sm text-center text-gray-500 pt-2">
+                    After you submit, I'll personally email you with a confirmation, payment details, and to say thank you!
+                </p>
+                
+                <!-- Success Message (Hidden) -->
+                <div id="success-message" class="hidden text-center bg-brand-teal-100 text-brand-teal-900 p-4 rounded-lg">
+                    Thank you! Your request has been sent. I'll be in touch soon!
+                </div>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-slate-800 text-pastel-blue py-12 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-sm">
+                &copy; 2025 Sarah Woods. All rights reserved.
+            </p>
+            <p class="text-xs text-slate-400 mt-2">
+                Website built with love.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Simple Form Submission Logic -->
+    <script>
+        const form = document.getElementById('order-form');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents actual form submission
+            
+            // In a real application, you would send this data to a server.
+            // For this demo, we'll just show the success message.
+            
+            form.reset(); // Clear the form
+            successMessage.classList.remove('hidden');
+            
+            // Hide the message after a few seconds
+            setTimeout(() => {
+                successMessage.classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+
+</body>
+</html>

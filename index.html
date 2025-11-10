@@ -165,7 +165,7 @@
                          class="w-64 md:w-80 rounded-xl shadow-2xl">
                     <img src="images/Custom_3.png"
                          alt="Custom book sample 3"
-                         class="w-64 md:w-80 rounded-xl shadow-2xl">                  
+                         class="w-64 md:w-80 rounded-xl shadow-2xl">
                 </div>
                 <br><br>
                 Please fill out the form below to place your request.<br><br>
@@ -229,27 +229,6 @@
             </p>
         </div>
     </footer>
-
-    <!-- Simple Form Submission Logic -->
-    <script>
-        const form = document.getElementById('order-form');
-        const successMessage = document.getElementById('success-message');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevents actual form submission
-            
-            // In a real application, you would send this data to a server.
-            // For this demo, we'll just show the success message.
-            
-            form.reset(); // Clear the form
-            successMessage.classList.remove('hidden');
-            
-            // Hide the message after a few seconds
-            setTimeout(() => {
-                successMessage.classList.add('hidden');
-            }, 5000);
-        });
-    </script>
 
 </body>
 </html>

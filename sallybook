@@ -1,0 +1,303 @@
+Put your HTML text here<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sally's Rockets - Retail Pitch Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Lato:wght@400;700&display=swap');
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f0f7ff; /* Soft sky blue background */
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .nav-active {
+            border-bottom: 4px solid #3b82f6;
+            color: #1e40af;
+            font-weight: 700;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin: auto;
+            height: 300px;
+        }
+        /* Gradient matching the book cover's sky/nature palette */
+        .hero-gradient {
+            background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%);
+        }
+        .section-fade {
+            animation: fadeIn 0.8s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .trust-badge {
+            background: #ffffff;
+            border-left: 6px solid #10b981;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased">
+
+    <!-- Chosen Palette: "Sky & Discovery" - Primary Blue (#3b82f6), Success Green (#10b981), and deep Slate (#1e293b). Matches the vibrant, outdoor feel of the book's SF landscape. -->
+    <!-- Application Structure Plan: Designed as a high-impact digital B2B Sell Sheet. We lead with the "Local Hook" (the SF Bridge illustration), follow with the "Business Proof" (Chabot success and margin chart), and conclude with an interactive calculator. This structure respects the user's focus on the Exploratorium and Cal Academy by emphasizing the "Museum Experience" connection. -->
+    <!-- Visualization & Content Choices: 
+         - Margin Doughnut -> Goal: Clarify 60/40 split -> Viz: Chart.js -> Interaction: Hover for exact cents -> Justification: Buyers need clear math.
+         - Profit Calculator -> Goal: Empower buyer -> Viz: Slider/Input UI -> Interaction: Real-time ROI calculation -> Justification: Converts "interest" into "planning." -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <span class="text-3xl">&#128640;</span>
+                <span class="font-heading font-extrabold text-2xl text-blue-900 uppercase tracking-tighter">Sally's Rockets</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <button class="nav-btn nav-active px-2 py-1 text-sm font-bold uppercase tracking-widest" data-target="overview">The Book</button>
+                <button class="nav-btn px-2 py-1 text-sm font-bold uppercase tracking-widest" data-target="business">Financials</button>
+                <button class="nav-btn px-2 py-1 text-sm font-bold uppercase tracking-widest" data-target="success">Success</button>
+                <button class="nav-btn px-2 py-1 text-sm font-bold uppercase tracking-widest" data-target="contact">Contact</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="pt-28 pb-20 max-w-6xl mx-auto px-6 space-y-24">
+
+        <!-- Section: Overview -->
+        <section id="overview" class="section-fade grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="space-y-8">
+                <div class="inline-block bg-blue-100 text-blue-700 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Local Student Author</div>
+                <h1 class="font-heading text-5xl font-black text-slate-900 leading-tight">
+                    Bringing the <span class="text-blue-600">Museum Experience</span> Home.
+                </h1>
+                <p class="text-xl text-slate-600 leading-relaxed">
+                    Inspired by the Exploratorium and Chabot Space & Science Center, <em>Sally's Rockets</em> is a celebration of curiosity. It tracks a young girl's seasonal visits to a hands-on museum, encouraging children to be imaginative, "look closer" and keep experimenting.
+                </p>
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-blue-50">
+                        <span class="block text-blue-500 font-bold text-xs uppercase mb-1">Target</span>
+                        <span class="font-heading font-bold text-slate-800">Ages 4-8</span>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm border border-blue-50">
+                        <span class="block text-blue-500 font-bold text-xs uppercase mb-1">Format</span>
+                        <span class="font-heading font-bold text-slate-800">Softcover / 38pp</span>
+                    </div>
+                </div>
+            </div>
+            <div class="relative">
+                <div class="hero-gradient rounded-3xl p-8 shadow-2xl transform rotate-2">
+                    <!-- Visual representation of the Hero Page -->
+                    <div class="bg-white rounded-xl p-4 shadow-inner">
+                        <div class="w-full h-64 bg-emerald-100 rounded-lg flex items-end justify-center relative overflow-hidden">
+                        <img src="images/Cover.png"/>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="font-heading font-black text-blue-900">SALLY'S ROCKETS</span>
+                            <span class="text-xs font-bold text-slate-400">MAY 2026</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Business -->
+        <section id="business" class="section-fade pt-12">
+            <div class="text-center mb-16">
+                <h2 class="font-heading text-4xl font-black text-slate-900 mb-4">Retail Economics</h2>
+                <p class="text-slate-600 max-w-2xl mx-auto">Standard 60/40 consignment terms designed for easy integration into museum gift shops and local independent bookstores.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-10 rounded-3xl shadow-xl border border-slate-100">
+                    <h3 class="font-heading text-xl font-bold mb-8 text-center uppercase tracking-widest text-slate-500">Margin Breakdown</h3>
+                    <div class="chart-container">
+                        <canvas id="marginChart"></canvas>
+                    </div>
+                    <div class="mt-10 grid grid-cols-2 gap-4 text-center">
+                        <div class="p-4 bg-blue-50 rounded-2xl">
+                            <p class="text-xs text-blue-600 font-bold uppercase mb-1">Store Profit</p>
+                            <p class="text-2xl font-heading font-black text-blue-900">$7.60</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-2xl">
+                            <p class="text-xs text-slate-500 font-bold uppercase mb-1">Wholesale</p>
+                            <p class="text-2xl font-heading font-black text-slate-700">$11.40</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-slate-900 p-10 rounded-3xl shadow-xl text-white">
+                    <h3 class="font-heading text-xl font-bold mb-8 uppercase tracking-widest text-blue-400">ROI Calculator</h3>
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 uppercase mb-3">Order Quantity</label>
+                            <div class="flex items-center space-x-6">
+                                <input type="range" id="qtySlider" min="1" max="100" value="20" class="flex-grow accent-blue-500">
+                                <input type="number" id="qtyInput" value="20" class="w-16 bg-slate-800 border-none text-center font-bold text-xl rounded-lg py-2">
+                            </div>
+                        </div>
+                        <div class="pt-6 border-t border-slate-800 space-y-4">
+                            <div class="flex justify-between">
+                                <span class="text-slate-400">Total Retail Value</span>
+                                <span class="font-heading font-bold" id="totalRetail">$380.00</span>
+                            </div>
+                            <div class="flex justify-between items-center pt-4">
+                                <span class="text-lg font-bold text-emerald-400">Net Store Profit</span>
+                                <span class="text-4xl font-heading font-black text-emerald-400" id="netProfit">$152.00</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 italic mt-6">Calculated at MSRP $19.00 with 40% margin.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Success -->
+        <section id="success" class="section-fade">
+            <div class="trust-badge p-10 rounded-2xl shadow-lg">
+                <div class="flex flex-col md:flex-row md:items-center gap-10">
+                    <div class="flex-grow">
+                        <h3 class="font-heading text-2xl font-black text-slate-900 mb-4 tracking-tight">Verified Market Success</h3>
+                        <p class="text-lg text-slate-700 leading-relaxed mb-6 italic">
+                            "The initial run of <em>A Day of Discovery at Chabot</em> successfully sold out at our gift shop. Siya's work resonates deeply with museum visitors and families looking for educational take-home experiences."
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-black">LW</div>
+                            <div>
+                                <p class="font-bold text-slate-900">Louise Waters</p>
+                                <p class="text-sm text-slate-500 uppercase font-bold tracking-tighter">CEO, Chabot Space & Science Center</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-blue-600 text-white p-6 rounded-2xl text-center">
+                            <p class="text-3xl font-black mb-1">SOLD OUT</p>
+                            <p class="text-xs uppercase font-bold opacity-80">Initial Print Run</p>
+                        </div>
+                        <div class="bg-slate-100 p-6 rounded-2xl text-center">
+                            <p class="text-3xl font-black text-slate-900 mb-1">3+</p>
+                            <p class="text-xs uppercase font-bold text-slate-500">Custom Commissions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Contact -->
+        <section id="contact" class="section-fade bg-white p-12 rounded-3xl shadow-xl border border-slate-100 text-center">
+            <h2 class="font-heading text-4xl font-black text-slate-900 mb-2">Ready to Launch?</h2>
+            <p class="text-slate-500 mb-12">I personally manage all inventory, deliveries, and consignment returns.</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="p-6">
+                    <span class="text-3xl block mb-4">&#128222;</span>
+                    <p class="font-heading font-bold text-slate-900">925-878-8373</p>
+                </div>
+                <div class="p-6">
+                    <span class="text-3xl block mb-4">&#128231;</span>
+                    <a href="mailto:chhibbersiya@gmail.com" class="font-heading font-bold text-blue-600 hover:underline">chhibbersiya@gmail.com</a>
+                </div>
+                <div class="p-6">
+                    <span class="text-3xl block mb-4">&#127760;</span>
+                    <a href="https://siyac.net" target="_blank" class="font-heading font-bold text-slate-900 hover:underline">siyac.net</a>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-400 uppercase tracking-widest font-bold">
+                Emerald High School • Dublin, CA • Student Entrepreneur
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const msrp = 19.00;
+            const storeMarginPct = 0.40;
+            const authorMarginPct = 0.60;
+
+            // Chart Setup
+            const ctx = document.getElementById('marginChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Store (40%)', 'Wholesale (60%)'],
+                    datasets: [{
+                        data: [msrp * storeMarginPct, msrp * authorMarginPct],
+                        backgroundColor: ['#3b82f6', '#e2e8f0'],
+                        borderWidth: 0,
+                        hoverOffset: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    cutout: '80%',
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: (item) => ` $${item.parsed.toFixed(2)}`
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Calculator Logic
+            const slider = document.getElementById('qtySlider');
+            const input = document.getElementById('qtyInput');
+            const totalRetail = document.getElementById('totalRetail');
+            const netProfit = document.getElementById('netProfit');
+
+            function updateCalc() {
+                const qty = parseInt(input.value) || 0;
+                totalRetail.innerText = `$${(qty * msrp).toFixed(2)}`;
+                netProfit.innerText = `$${(qty * msrp * storeMarginPct).toFixed(2)}`;
+            }
+
+            slider.addEventListener('input', () => {
+                input.value = slider.value;
+                updateCalc();
+            });
+
+            input.addEventListener('input', () => {
+                slider.value = input.value;
+                updateCalc();
+            });
+
+            // Navigation
+            const navBtns = document.querySelectorAll('.nav-btn');
+            navBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const targetId = e.target.getAttribute('data-target');
+                    const target = document.getElementById(targetId);
+                    const yOffset = -100;
+                    const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                    window.scrollTo({top: y, behavior: 'smooth'});
+                });
+            });
+
+            // Active Nav Highlight
+            window.addEventListener('scroll', () => {
+                let current = "";
+                const sections = document.querySelectorAll('section');
+                sections.forEach(s => {
+                    const top = s.offsetTop;
+                    if(pageYOffset >= top - 150) current = s.getAttribute('id');
+                });
+                navBtns.forEach(btn => {
+                    btn.classList.remove('nav-active');
+                    if(btn.getAttribute('data-target') === current) btn.classList.add('nav-active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

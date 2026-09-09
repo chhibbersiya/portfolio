@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Siya — Application Tracker</title>
+<style>
+  :root {
+    --surface-0: #f5f4ef; --surface-1: #ecebe4; --surface-2: #ffffff;
+    --text-primary: #26251f; --text-secondary: #5f5e58; --text-muted: #91908a;
+    --border: rgba(0,0,0,0.10); --border-strong: rgba(0,0,0,0.18);
+    --radius: 8px;
+    --bg-danger:#fcebeb; --text-danger:#a32d2d; --border-danger:#f09595;
+    --bg-accent:#e6f1fb; --text-accent:#185fa5;
+    --bg-success:#eaf3de; --text-success:#3b6d11;
+    --bg-pro:#eeedfe; --text-pro:#534ab7;
+    --fill-ghost-selected: rgba(0,0,0,0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-0:#1c1c1a; --surface-1:#26251f; --surface-2:#2f2e28;
+      --text-primary:#eceae0; --text-secondary:#b4b2a9; --text-muted:#888780;
+      --border:rgba(255,255,255,0.12); --border-strong:rgba(255,255,255,0.22);
+      --bg-danger:#501313; --text-danger:#f09595; --border-danger:#a32d2d;
+      --bg-accent:#042c53; --text-accent:#85b7eb;
+      --bg-success:#173404; --text-success:#97c459;
+      --bg-pro:#26215c; --text-pro:#afa9ec;
+      --fill-ghost-selected: rgba(255,255,255,0.14);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--surface-0); color: var(--text-primary);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  #root { max-width: 720px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+  h1 { font-size: 22px; font-weight: 500; margin: 0 0 0.25rem; }
+  .sub { font-size: 14px; color: var(--text-secondary); margin: 0 0 1.5rem; }
+  input[type=checkbox] { cursor: pointer; }
+  button { font-family: inherit; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.6/babel.min.js"></script>
+
+<script type="text/babel" data-presets="react">
+const { useState, useEffect, useMemo } = React;
+
+const TODAY = new Date();
+TODAY.setHours(0,0,0,0);
+
+const SCHOOLS = [
+  { id:"ut", name:"UT Austin", major:"Arts & Entertainment Technologies", alt:"Computer Science (harder)", round:"EA", tier:"reach", real:"2026-10-15", target:"2026-10-11", confirmed:true,
+    tasks:["ApplyTexas / Common App","Select Early Action","Docs by Oct 22","Confirm CFA major requirements"] },
+  { id:"usc", name:"USC — Iovine & Young", major:"ATBI (ED1, binding)", alt:"Business of Innovation", round:"ED1", tier:"reach", real:"2026-11-01", target:"2026-10-28", confirmed:true,
+    tasks:["Common App + essay","IYA written essays","60-sec intro video","Curated portfolio (SlideRoom)"] },
+  { id:"purdue", name:"Purdue", major:"UX Design (Polytechnic)", alt:"Integrated Business & Engineering", round:"EA", tier:"target", real:"2026-11-01", target:"2026-10-28", confirmed:true,
+    tasks:["Common App + essay","Apply to UX Design ON PURPOSE (not 'engineering')","Purdue supplement"] },
+  { id:"neu", name:"Northeastern", major:"AI and Design", alt:"CS and Business Administration", round:"EA/ED1", tier:"reach", real:"2026-11-01", target:"2026-10-28", confirmed:false,
+    tasks:["Common App + essay","Northeastern supplement","Confirm AI+Design vs CS+Design choice"] },
+  { id:"asu", name:"ASU + Barrett", major:"Human Systems Eng — UX", alt:"Innovation in Society (BS)", round:"Rolling", tier:"likely", real:"2026-11-01", target:"2026-10-28", confirmed:true,
+    tasks:["ASU application (NAMU merit auto)","Barrett essay","Barrett scholarships (by Feb 1)"] },
+  { id:"rit", name:"RIT", major:"New Media Interactive Development", alt:"Human-Centered Computing", round:"EA", tier:"likely", real:"2026-11-01", target:"2026-10-28", confirmed:false,
+    tasks:["Common App + essay","RIT supplement","DECIDE: keep or cut before Oct"] },
+  { id:"gt", name:"Georgia Tech", major:"AECT", alt:"Computational Media", round:"EA2", tier:"reach", real:"2026-11-02", target:"2026-10-29", confirmed:true,
+    tasks:["Common App + essay","Submit app by Nov 2 (unlocks portfolio link)","AECT portfolio — 3 projects (due Nov 16)","500-word portfolio essay","Self-report scores by Dec 8"] },
+  { id:"uw", name:"Univ. of Washington", major:"Engineering Undeclared → HCDE", alt:"Computer Science", round:"Single", tier:"target", real:"2026-11-15", target:"2026-11-11", confirmed:true,
+    tasks:["UW application","Engineering short responses","List 2nd-choice major"] },
+  { id:"cub", name:"CU Boulder", major:"Creative Technology & Design", alt:"Computer Science", round:"EA", tier:"target", real:"2026-11-15", target:"2026-11-11", confirmed:true,
+    tasks:["Common App + essay","250-word 'why CU' short answer","Self-report test scores"] },
+  { id:"uc", name:"UC — all 9 campuses", major:"Per-campus majors", alt:"Berkeley MET / UCLA DMA / UCI Game Design / UCSC / UCSD", round:"RD", tier:"mixed", real:"2026-11-30", target:"2026-11-27", confirmed:true,
+    tasks:["4 Personal Insight Questions","Set major per campus","Activities + awards","UCLA DMA portfolio (if applying)"] },
+  { id:"calpoly", name:"Cal Poly SLO", major:"General Engineering (feeds LAES)", alt:"Aspirational, NOT the safety · LAES + ETS are a year-2 transfer · Cal State Apply, no essays scored", round:"RD", tier:"reach", real:"2026-11-30", target:"2026-11-27", confirmed:true,
+    tasks:["Cal State Apply (separate system)","Apply to General Engineering","Note: LAES is post-enrollment transfer only","Confirm major-specific GPA/course criteria"] },
+  { id:"berkeley-met", name:"UC Berkeley — MET (supp.)", major:"MET (EECS + Business)", alt:"Covered by UC app; MET supplement separate", round:"RD", tier:"reach", real:"2026-12-14", target:"2026-12-10", confirmed:false,
+    tasks:["MET supplemental essay","MET video"] },
+  { id:"ucla-dma", name:"UCLA — DMA portfolio", major:"Design Media Arts (BA)", alt:"Cognitive Science", round:"RD", tier:"reach", real:"2026-12-15", target:"2026-12-11", confirmed:false,
+    tasks:["Required supplement","Portfolio","Confirm exact DMA deadline"] },
+  { id:"lehigh", name:"Lehigh", major:"IDEAS (self-built interdisciplinary)", alt:"—", round:"RD", tier:"target", real:"2027-01-01", target:"2026-12-28", confirmed:false,
+    tasks:["Common App + essay","Lehigh supplement","DECIDE: keep or cut"] },
+  { id:"nyu", name:"NYU", major:"Tandon IDM (ED2, binding)", alt:"Tandon CS · can switch to RD if you decide against binding", round:"ED2", tier:"reach", real:"2027-01-01", target:"2026-12-28", confirmed:true,
+    tasks:["Common App + essay","'Why NYU' supplement","DECIDE by late Dec: ED2 (binding) or RD","No portfolio channel — creative work goes in activities list"] },
+  { id:"cornell", name:"Cornell", major:"Information Science (CALS, BS)", alt:"Information Science (A&S, BA)", round:"RD", tier:"reach", real:"2027-01-02", target:"2026-12-29", confirmed:false,
+    tasks:["Common App + essay","Cornell + CALS supplement"] },
+  { id:"cmu", name:"Carnegie Mellon", major:"College of Engineering, undecided", alt:"Declare EDIE / Eng & Fine Arts in year 1", round:"RD", tier:"reach", real:"2027-01-03", target:"2026-12-30", confirmed:false,
+    tasks:["Common App + essay","CMU supplement","VIVA video interview (Kina story)"] },
+  { id:"olin", name:"Olin", major:"Engineering (design focus)", alt:"—", round:"RD", tier:"reach", real:"2027-01-05", target:"2027-01-01", confirmed:false,
+    tasks:["Common App + essay","Olin questions + fee","DECIDE: keep or cut"] },
+  { id:"hmc", name:"Harvey Mudd", major:"General admission (no matching major)", alt:"—", round:"RD", tier:"reach", real:"2027-01-05", target:"2027-01-01", confirmed:false,
+    tasks:["Common App + essay","Optional interview","DECIDE: engineer-first? else cut"] },
+  { id:"stanford", name:"Stanford", major:"Design (BS)", alt:"—", round:"RD", tier:"reach", real:"2027-01-05", target:"2027-01-01", confirmed:false,
+    tasks:["Common App + essay","Stanford short questions"] },
+  { id:"penn", name:"Penn", major:"Visual & Interactive Computing (BSE)", alt:"Computer Science (BSE)", round:"RD", tier:"reach", real:"2027-01-05", target:"2027-01-01", confirmed:false,
+    tasks:["Common App + essay","Penn + engineering supplement"] },
+  { id:"brown", name:"Brown", major:"Design Engineering (ScB)", alt:"Computer Science", round:"RD", tier:"reach", real:"2027-01-05", target:"2027-01-01", confirmed:true,
+    tasks:["Common App + essay","Brown supplement","Optional video intro"] },
+];
+
+const TIER_COLOR = {
+  reach:{bg:"var(--bg-danger)",fg:"var(--text-danger)",label:"Reach"},
+  target:{bg:"var(--bg-accent)",fg:"var(--text-accent)",label:"Target"},
+  likely:{bg:"var(--bg-success)",fg:"var(--text-success)",label:"Likely"},
+  mixed:{bg:"var(--bg-pro)",fg:"var(--text-pro)",label:"Mixed"},
+};
+
+const STORAGE_KEY = "siya-app-progress";
+function daysUntil(d){ return Math.round((new Date(d)-TODAY)/86400000); }
+function fmt(d){ return new Date(d).toLocaleDateString("en-US",{month:"short",day:"numeric"}); }
+
+function App(){
+  const [done,setDone] = useState(()=>{ try { return JSON.parse(localStorage.getItem(STORAGE_KEY)||"{}"); } catch(e){ return {}; } });
+  const [collapsed,setCollapsed] = useState({});
+  const [filter,setFilter] = useState("all");
+
+  useEffect(()=>{ try { localStorage.setItem(STORAGE_KEY, JSON.stringify(done)); } catch(e){} },[done]);
+
+  const toggle = (sid,i)=>{ const k=`${sid}:${i}`; setDone(p=>({...p,[k]:!p[k]})); };
+  const stats = (s)=>{ const total=s.tasks.length; const complete=s.tasks.filter((_,i)=>done[`${s.id}:${i}`]).length; return {total,complete,pct: total?Math.round(complete/total*100):0}; };
+
+  const sorted = useMemo(()=>{
+    let list=[...SCHOOLS].sort((a,b)=>new Date(a.target)-new Date(b.target));
+    if(filter!=="all") list=list.filter(s=>s.tier===filter||(filter==="reach"&&s.tier==="mixed"));
+    return list;
+  },[filter]);
+
+  const overall = useMemo(()=>{ let t=0,c=0; SCHOOLS.forEach(s=>{t+=s.tasks.length; s.tasks.forEach((_,i)=>{ if(done[`${s.id}:${i}`])c++; });}); return {t,c,pct:t?Math.round(c/t*100):0}; },[done]);
+  const next = sorted.find(s=>daysUntil(s.target)>=0 && stats(s).pct<100);
+
+  return (
+    <div>
+      <h1>Siya — application tracker</h1>
+      <p className="sub">Sorted by buffer target, soonest first. Progress saves in this browser.</p>
+
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit, minmax(140px, 1fr))",gap:12,marginBottom:20}}>
+        <Stat label="Overall progress" value={overall.pct+"%"} note={`${overall.c} of ${overall.t} tasks`} />
+        <Stat label="Next up" value={next?`${Math.max(0,daysUntil(next.target))}d`:"—"} note={next?next.name.split(" —")[0]:"all clear"} />
+        <Stat label="Schools" value={SCHOOLS.length} note="on the list" />
+      </div>
+
+      <div style={{display:"flex",gap:8,marginBottom:16,flexWrap:"wrap"}}>
+        {["all","reach","target","likely"].map(f=>(
+          <button key={f} onClick={()=>setFilter(f)}
+            style={{padding:"5px 14px",fontSize:13,borderRadius:"var(--radius)",cursor:"pointer",border:"0.5px solid var(--border-strong)",textTransform:"capitalize",
+              background:filter===f?"var(--fill-ghost-selected)":"transparent",color:"var(--text-primary)",fontWeight:filter===f?500:400}}>
+            {f==="all"?`All ${SCHOOLS.length}`:f}
+          </button>
+        ))}
+      </div>
+
+      <div style={{display:"flex",flexDirection:"column",gap:10}}>
+        {sorted.map(s=>{
+          const st=stats(s); const d=daysUntil(s.target); const tc=TIER_COLOR[s.tier];
+          const isC=collapsed[s.id]; const urgent=d>=0&&d<=21&&st.pct<100; const overdue=d<0&&st.pct<100;
+          return (
+            <div key={s.id} style={{background:"var(--surface-2)",border:`0.5px solid ${urgent?"var(--border-danger)":"var(--border)"}`,borderRadius:12,overflow:"hidden"}}>
+              <div onClick={()=>setCollapsed({...collapsed,[s.id]:!isC})} style={{display:"flex",alignItems:"center",gap:12,padding:"0.85rem 1rem",cursor:"pointer"}}>
+                <div style={{flex:1,minWidth:0}}>
+                  <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
+                    <span style={{fontWeight:500,fontSize:15}}>{s.name}</span>
+                    <span style={{fontSize:11,padding:"2px 8px",borderRadius:20,background:tc.bg,color:tc.fg}}>{tc.label}</span>
+                    {!s.confirmed && <span style={{fontSize:11,color:"var(--text-muted)"}}>⚠ verify date</span>}
+                  </div>
+                  <div style={{fontSize:13,color:"var(--text-secondary)",marginTop:2}}>{s.major}</div>
+                </div>
+                <div style={{textAlign:"right",flexShrink:0}}>
+                  <div style={{fontSize:13,fontWeight:500,color:(overdue||urgent)?"var(--text-danger)":"var(--text-primary)"}}>
+                    {st.pct===100?"Done":overdue?`${fmt(s.target)} · past`:fmt(s.target)}
+                  </div>
+                  <div style={{fontSize:12,color:"var(--text-muted)"}}>
+                    {st.pct===100?<span style={{color:"var(--text-success)"}}>✓ complete</span>:`${st.complete}/${st.total} · ${s.round}`}
+                  </div>
+                </div>
+              </div>
+              <div style={{height:3,background:"var(--surface-0)"}}>
+                <div style={{height:"100%",width:`${st.pct}%`,background:st.pct===100?"var(--text-success)":tc.fg,transition:"width 0.2s"}} />
+              </div>
+              {!isC && (
+                <div style={{padding:"0.75rem 1rem 1rem"}}>
+                  {s.alt && s.alt!=="—" && <div style={{fontSize:12,color:"var(--text-muted)",marginBottom:10}}>Alt / notes: {s.alt}</div>}
+                  <div style={{display:"flex",flexDirection:"column",gap:2}}>
+                    {s.tasks.map((task,i)=>{ const ch=!!done[`${s.id}:${i}`]; return (
+                      <label key={i} style={{display:"flex",alignItems:"flex-start",gap:10,padding:"6px 4px",cursor:"pointer",borderRadius:"var(--radius)"}}>
+                        <input type="checkbox" checked={ch} onChange={()=>toggle(s.id,i)} style={{marginTop:2,width:16,height:16,flexShrink:0,accentColor:tc.fg}} />
+                        <span style={{fontSize:14,lineHeight:1.5,color:ch?"var(--text-muted)":"var(--text-primary)",textDecoration:ch?"line-through":"none"}}>{task}</span>
+                      </label>
+                    );})}
+                  </div>
+                  <div style={{fontSize:12,color:"var(--text-muted)",marginTop:10,paddingTop:8,borderTop:"0.5px solid var(--border)"}}>
+                    Real deadline: {fmt(s.real)} · your buffer target: {fmt(s.target)}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      <div style={{marginTop:20,padding:"0.85rem 1rem",background:"var(--surface-1)",borderRadius:"var(--radius)",fontSize:13,color:"var(--text-secondary)",lineHeight:1.6}}>
+        Progress saves automatically in this browser (localStorage) — same browser and device to keep it. Dates marked "verify" still carry last-cycle timing; confirm on each school's site. Buffer targets sit a few days before the real deadline; items depending on others (test sends, recommenders, post-submission portals) want more room.
+      </div>
+    </div>
+  );
+}
+
+function Stat({label,value,note}){
+  return (
+    <div style={{background:"var(--surface-1)",borderRadius:"var(--radius)",padding:"0.85rem 1rem"}}>
+      <div style={{fontSize:13,color:"var(--text-secondary)"}}>{label}</div>
+      <div style={{fontSize:24,fontWeight:500}}>{value}</div>
+      <div style={{fontSize:12,color:"var(--text-muted)"}}>{note}</div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

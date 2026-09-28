@@ -1,0 +1,10 @@
+{
+  "name": "siya-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Siya Chhibber's static portfolio. No install or build needed for GitHub Pages.",
+  "scripts": {
+    "dev": "node tools/dev-server.mjs",
+    "build": "python3 tools/build.py"
+  }
+}

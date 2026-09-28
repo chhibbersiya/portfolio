@@ -1,0 +1,444 @@
+{
+  "description": "The portfolio of Siya Chhibber: assistive hardware, research, children's books, journalism, crochet, and software design.",
+  "intro": "I’m Siya. I work across code, circuits, stories, and yarn—exploring how an idea becomes something people can use, understand, or enjoy.",
+  "about": [
+    "I’m a student at Emerald High School in Dublin, California. I’m interested in the space where engineering, design, and storytelling meet: a wearable that communicates through touch, a science idea that becomes a children’s book, or a pattern that becomes something you can hold.",
+    "My work moves between research and making. At NASA Ames, I worked on drone safety and transportation simulation. At Chabot Space & Science Center, I help children explore science through hands-on activities. Both keep me asking how to make something complicated understandable.",
+    "Away from a prototype or a draft, I crochet, play piano and guitar, and practice archery."
+  ],
+  "experiences": [
+    {
+      "label": "Science communication",
+      "title": "Chabot Space & Science Center",
+      "text": "Three years, from volunteer to paid intern to Galaxy Explorer Mentor. I guide hands-on experiments, including paper rockets, and contributed CAD work to a team-built RC rover."
+    },
+    {
+      "label": "Community & leadership",
+      "title": "Astronomy Club",
+      "text": "I founded the club at Emerald, helped create its charter and election process, and grew the group from 10 to 25 members. I’m working toward a leadership handoff that lets the club keep going."
+    },
+    {
+      "label": "Beyond the desk",
+      "title": "Making in other forms",
+      "text": "Crochet patterns, visual art, piano, guitar, and archery give me different ways to practice attention, structure, and patience."
+    }
+  ],
+  "projects": [
+    {
+      "id": "kina",
+      "title": "Kina",
+      "category": "Assistive hardware · Product design",
+      "card_description": "Wearable obstacle awareness through touch.",
+      "description": "A small wearable prototype that turns nearby obstacles into haptic signals, exploring awareness above the reach of a white cane.",
+      "card_image": "kina-prototype.webp",
+      "hero_image": "kina-concept.webp",
+      "image_alt": "Kina project visuals showing the sensing concept and wearable prototype electronics.",
+      "facts": [
+        [
+          "My role",
+          "Design, electronics & firmware"
+        ],
+        [
+          "Format",
+          "Wearable hardware"
+        ],
+        [
+          "Tools",
+          "ToF sensing, orientation sensor, embedded C++"
+        ],
+        [
+          "Stage",
+          "Working prototype"
+        ]
+      ],
+      "sections": [
+        {
+          "title": "The question",
+          "paragraphs": [
+            "The idea began after I saw a man using a cane encounter an overhanging obstacle. I wanted to explore how a small device could provide another cue about obstacles near the head and shoulders."
+          ]
+        },
+        {
+          "title": "Making the idea wearable",
+          "paragraphs": [
+            "My first concept used a helmet and audio feedback. Feedback raised two practical questions: would someone want to wear it, and would the alert remain useful in a noisy environment? I moved toward a smaller brooch or locket with vibration feedback.",
+            "The prototype combines a time-of-flight distance sensor, an orientation sensor, a QT Py microcontroller, a rechargeable battery, and a vibration motor. Haptic pulses become stronger as an obstacle gets closer."
+          ]
+        },
+        {
+          "title": "When the hardware questioned the code",
+          "paragraphs": [
+            "A distance reading alone wasn’t enough. Bending down could make the device treat the ground as an obstacle, so I added orientation checks. The motor’s vibration also interfered with motion readings, creating another source of false alerts to debug.",
+            "Those problems made physical testing central to the project. A program could look correct while still misunderstanding what the sensor was experiencing."
+          ]
+        },
+        {
+          "title": "What comes next",
+          "paragraphs": [
+            "The next step is testing with blind and low-vision users to understand whether the feedback is useful, comfortable, and understandable in practice."
+          ]
+        }
+      ],
+      "note": "Kina is a proof of concept. It has not yet been tested with blind users, and its intended role is to complement a cane.",
+      "media": [
+        {
+          "type": "image",
+          "src": "kina-prototype.webp",
+          "alt": "Front and back views of Kina’s prototype, with the distance sensor, orientation sensor, QT Py, battery, and vibration components labeled.",
+          "caption": "The physical prototype and its components, from my project presentation."
+        },
+        {
+          "type": "image",
+          "src": "kina-system.webp",
+          "alt": "Kina system diagram connecting the LiPo battery and power board to the microcontroller, sensors, and vibration motor.",
+          "caption": "How the power, sensing, and haptic feedback components connect."
+        }
+      ]
+    },
+    {
+      "id": "crochet",
+      "title": "Crochet, in three dimensions",
+      "category": "Craft · Pattern design",
+      "card_description": "Building form one stitch at a time.",
+      "description": "Crochet feels like 3D printing by hand: a sequence of instructions becomes a shape, and small changes to that sequence change the result.",
+      "card_image": "crochet-collection.webp",
+      "hero_image": "crochet-collection.webp",
+      "image_alt": "A collection of small crocheted characters made by Siya.",
+      "facts": [
+        [
+          "My role",
+          "Maker & pattern designer"
+        ],
+        [
+          "Medium",
+          "Yarn & crochet"
+        ],
+        [
+          "Work",
+          "Characters, wearables & patterns"
+        ],
+        [
+          "Format",
+          "Physical objects & video"
+        ]
+      ],
+      "sections": [
+        {
+          "title": "Instructions you can hold",
+          "paragraphs": [
+            "A crochet pattern is a structure I can follow, test, and change. Stitch counts control the shape; yarn and tension change its feel. I like the connection between something that reads like a set of instructions and something that ends up soft and three-dimensional."
+          ]
+        },
+        {
+          "title": "From materials to a character",
+          "paragraphs": [
+            "My process video follows a crocheted elf through sketching, yarn selection, stitching, assembly, and the finished piece. It also shows a wider collection of characters and wearables.",
+            "My collection includes pieces made from other designers’ patterns alongside my original pattern work. The video credits the elf pattern’s designer."
+          ]
+        },
+        {
+          "title": "Beyond a single object",
+          "paragraphs": [
+            "I also design and sell original crochet patterns. Writing a pattern means turning the way I made something into instructions another person can follow."
+          ]
+        }
+      ],
+      "media": [
+        {
+          "type": "video",
+          "src": "crochet-process.mp4",
+          "poster": "crochet-video-poster.webp",
+          "alt": "Siya explains her crochet process and shows her work.",
+          "caption": "My crochet portfolio video: planning an elf, choosing yarn, stitching and assembly, followed by a collection of finished work. The process is also described above."
+        },
+        {
+          "type": "image",
+          "src": "crochet-wearables.webp",
+          "alt": "A blue cardigan with crocheted stars, a red and gold cardigan and scarf, and two hats arranged on a rug.",
+          "caption": "Wearable projects: exploring color, texture, and construction at a different scale."
+        }
+      ]
+    },
+    {
+      "id": "pill-sleeve",
+      "title": "Pill Adherence Sleeve",
+      "category": "Embedded systems · Interaction design",
+      "card_description": "A visible record, built into a daily routine.",
+      "description": "A sleeve around a pill bottle that records removal-and-return cycles and makes the day’s count visible through a simple LED display.",
+      "facts": [
+        [
+          "My role",
+          "Product, firmware & enclosure design"
+        ],
+        [
+          "Tools",
+          "ESP32-C3, sensors & parametric CAD"
+        ],
+        [
+          "Interaction",
+          "Bottle movement & an undo button"
+        ],
+        [
+          "Stage",
+          "Prototype under testing"
+        ]
+      ],
+      "sections": [
+        {
+          "title": "Use the action that already happens",
+          "paragraphs": [
+            "The bottle sits inside the sleeve. An infrared break-beam sensor detects when it is removed and returned; a completed cycle increments the counter. There is no app to open or separate log to remember.",
+            "An eight-pixel display shows the state: red before any cycles have been recorded, green for the count, and a blue sweep while the bottle is out."
+          ]
+        },
+        {
+          "title": "Designing for ordinary mistakes",
+          "paragraphs": [
+            "Picking up the bottle to read its label can create an accidental count. That made an undo button more useful than an add button. Presses while the bottle is out are ignored, and sensor readings are debounced to avoid treating a brief interruption as a real event.",
+            "The device uses wall power so daily charging is not part of the routine. An RTC keeps the clock running through an outage, while the stored count can survive a loss of main power. Optional Wi-Fi is used for clock synchronization and settings; the core device operates offline."
+          ]
+        },
+        {
+          "title": "A housing shaped by assembly",
+          "paragraphs": [
+            "The enclosure is generated parametrically and includes sensor pockets, a display window, board supports, and a separate base plate. Iterations widened the bottle opening, increased room for the electronics, and replaced a cable hole that was too small for the actual USB connector.",
+            "Physical button mounting remains an open assembly detail. The project is still being tested, with diagnostic output retained to understand timing and reset behavior."
+          ]
+        },
+        {
+          "title": "Making the state understandable",
+          "paragraphs": [
+            "The design includes a daily reset, adjustable settings, and visual feedback when a configured target is reached. The display and correction mechanism are as much a part of the product as the sensor and firmware."
+          ]
+        }
+      ],
+      "note": "The device records bottle-use events as a proxy for doses. It cannot verify that medication was swallowed or that the correct amount was taken."
+    },
+    {
+      "id": "dropledger",
+      "title": "DropLedger",
+      "category": "Software · UX · AI workflow",
+      "card_description": "From a receipt to a property expense record.",
+      "description": "A mobile app concept for turning receipt photos and invoices into organized property expenses, with as little manual entry as possible.",
+      "facts": [
+        [
+          "My role",
+          "Product, UX & architecture"
+        ],
+        [
+          "Platform",
+          "Mobile app concept"
+        ],
+        [
+          "Planned stack",
+          "React Native, Supabase & Gemini"
+        ],
+        [
+          "Stage",
+          "Product & architecture design"
+        ]
+      ],
+      "sections": [
+        {
+          "title": "Start where the receipt already is",
+          "paragraphs": [
+            "The proposed workflow uses the phone’s native share sheet. A user can send a photo or PDF to DropLedger, optionally add a note such as which property it belongs to, and let the app process it.",
+            "The goal is to remove routine typing: vendor, date, amount, and category should come from the document rather than a form."
+          ]
+        },
+        {
+          "title": "Borrow a familiar mental model",
+          "paragraphs": [
+            "The home screen treats properties like conversation threads. Opening a property reveals its expense history, with access to search, filters, document capture, and export.",
+            "An Uncategorized thread stays at the top. When a receipt cannot confidently be connected to a property, it belongs in a visible review queue instead of being silently filed under a guess."
+          ]
+        },
+        {
+          "title": "The proposed pipeline",
+          "bullets": [
+            "Capture or share a document, with an optional context note.",
+            "Store the original receipt and send it to a multimodal extraction service.",
+            "Extract structured fields for the amount, date, vendor, category, and implied property.",
+            "Resolve the property against the user’s existing list, or mark the expense for review.",
+            "Export a selected date range as a CSV ledger."
+          ]
+        },
+        {
+          "title": "Designing around uncertainty",
+          "paragraphs": [
+            "The proposed architecture uses React Native with Expo, Supabase storage and PostgreSQL, and an Edge Function calling Gemini Flash. The important product decision is what happens when the model is unsure: the original document remains available and the expense is routed for review.",
+            "The tax-preparation output is deliberately straightforward: a dated expense ledger that can be shared with an accountant."
+          ]
+        }
+      ],
+      "note": "This case study describes the product and architecture design. The interface illustration uses sample data; it is not a screenshot of a released app."
+    },
+    {
+      "id": "books",
+      "title": "Science, in story form",
+      "category": "Writing · Illustration · Entrepreneurship",
+      "card_description": "Two children’s books, from page to purchase.",
+      "description": "Writing and illustrating A Day of Discovery at Chabot and Sally’s Rockets—and following the work through printing, pricing, retail pitches, and sales.",
+      "facts": [
+        [
+          "My role",
+          "Author, illustrator & seller"
+        ],
+        [
+          "Books",
+          "Two illustrated science stories"
+        ],
+        [
+          "Audience",
+          "Young readers"
+        ],
+        [
+          "Stage",
+          "Published & sold"
+        ]
+      ],
+      "sections": [
+        {
+          "title": "Science at a child’s scale",
+          "paragraphs": [
+            "Working with young visitors at Chabot made me think about how a scientific idea becomes a story a child wants to follow. I wrote and illustrated A Day of Discovery at Chabot and Sally’s Rockets as another way to invite that curiosity."
+          ]
+        },
+        {
+          "title": "A Day of Discovery at Chabot",
+          "paragraphs": [
+            "The book’s first 25-copy run sold out at Chabot in three months. I also completed four personalized commissions, adapting the work for individual readers."
+          ]
+        },
+        {
+          "title": "Sally’s Rockets",
+          "paragraphs": [
+            "For the next book, the work extended beyond the pages. I developed a retail pitch deck, consignment proposals, and an ROI calculator, then contacted eight retailers. One purchased copies after seven did not respond.",
+            "The project required decisions about illustration and storytelling alongside practical questions about printing cost, retail price, and how to make a pitch useful to a shop."
+          ]
+        },
+        {
+          "title": "Following the whole journey",
+          "paragraphs": [
+            "This work gave me experience with both making a creative product and getting it into someone else’s hands. The reader, the buyer, and the retailer all needed something different from the same book."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nasa",
+      "title": "Research at NASA Ames",
+      "category": "Research · Modeling · Data",
+      "card_description": "Drone safety and the ground behind air mobility.",
+      "description": "Two summer research experiences connecting data preparation, drone safety, and urban air mobility simulation.",
+      "facts": [
+        [
+          "My role",
+          "Research intern & poster co-author"
+        ],
+        [
+          "Setting",
+          "NASA Ames Research Center"
+        ],
+        [
+          "Work",
+          "UAS safety & transportation modeling"
+        ],
+        [
+          "Tools",
+          "Python & simulation data pipelines"
+        ]
+      ],
+      "sections": [
+        {
+          "title": "Drone safety in emergency response",
+          "paragraphs": [
+            "My 2025 research contributed to Applying Specific Operations Risk Assessment (SORA) to UAS Emergency Response Missions. I am a co-author of the project poster archived on NASA’s Technical Reports Server."
+          ]
+        },
+        {
+          "title": "The ground matters to air taxis",
+          "paragraphs": [
+            "For the air-taxi corridor project, I owned the Ground Scenarios module. This involved combining household travel, Census, ACS, and OpenStreetMap data to build synthetic populations and ground networks for a transportation simulation.",
+            "The work connected a proposed air-mobility system to the trips people make on the ground. Preparing those inputs was part of making the simulation meaningful."
+          ]
+        },
+        {
+          "title": "Question the input, too",
+          "paragraphs": [
+            "While debugging a simulation problem, I traced the issue back to the data pipeline I had built. The experience reinforced a habit I also use in my hardware projects: check the assumptions behind a result, including my own."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "label": "2025 research poster on NASA NTRS",
+          "href": "https://ntrs.nasa.gov/citations/20250007296"
+        }
+      ]
+    },
+    {
+      "id": "journalism",
+      "title": "Four Stories on a Crisis",
+      "category": "Journalism · Research · Communication",
+      "card_description": "Reporting the opioid crisis for young readers.",
+      "description": "Four published articles, each using a different reporting approach to make a complicated public-health issue understandable.",
+      "facts": [
+        [
+          "My role",
+          "Reporter & sole author"
+        ],
+        [
+          "Program",
+          "Junior Journalists"
+        ],
+        [
+          "Period",
+          "April–July 2026"
+        ],
+        [
+          "Work",
+          "Four published articles"
+        ]
+      ],
+      "sections": [
+        {
+          "title": "The reporting process",
+          "paragraphs": [
+            "During a paid four-month journalism internship, I pitched stories in weekly editorial meetings, worked with an advisor, verified sources, and revised through editorial review. My brief was to make the opioid crisis understandable to other young people."
+          ]
+        },
+        {
+          "title": "Changing habits to break addiction",
+          "paragraphs": [
+            "Published April 13, 2026. I used behavioral research to explore how environment and cues shape habit formation. The writing challenge was to explain the mechanism through a story a reader could follow."
+          ]
+        },
+        {
+          "title": "Belief systems and opioid addiction",
+          "paragraphs": [
+            "Published April 21, 2026. This piece examined personal conviction and medical decisions through the cases of Steve Jobs and Prince. Editorial feedback led me to rebuild the framing around independently sourced events and separate evidence from blame."
+          ]
+        },
+        {
+          "title": "The depiction of addiction in cinema",
+          "paragraphs": [
+            "Published July 12, 2026. I interviewed film-studies instructor Antonio Alfaro in an eight-question Q&A about portrayals of substance use, realism, narrative choices, and social responsibility."
+          ]
+        },
+        {
+          "title": "Beyond ‘Just Say No’",
+          "paragraphs": [
+            "Published July 26, 2026. I developed a policy argument about evidence-based prevention, drawing on research and government reporting. Each criticism needed to rest on evidence readers could examine."
+          ]
+        }
+      ],
+      "links": [
+        {
+          "label": "Read the journalism portfolio (PDF)",
+          "href": "downloads/journalism-portfolio.pdf"
+        }
+      ]
+    }
+  ]
+}
